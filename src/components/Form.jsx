@@ -13,11 +13,6 @@ function Form() {
         
     };
 
-  useEffect(()=>{
-      console.log(errors)
-  }, [errors])
-
-
   return (
     <>
           <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3'>
@@ -25,6 +20,9 @@ function Form() {
               <div>
                   <span> Upload Avatar </span>
                   <input type="file" {...register("avatar")} />
+                  {errors.avatar?.message && (
+                    <p className='text-sm text-red-500'>{errors.avatar?.message}</p>
+                  )}
               </div>
 
 
