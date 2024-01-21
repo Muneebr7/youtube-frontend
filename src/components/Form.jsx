@@ -7,15 +7,27 @@ import { useEffect } from 'react';
 function Form() {
    const {register , handleSubmit , formState: { errors }} = useForm({resolver : zodResolver(registerSchema)})
 
-    const onSubmit = (data) => {
-        console.log(data)
-        console.log(errors)
+    const onSubmit = async (data) => {
+        console.log(data.avatar[0])
+        
+        
     };
 
-  
+  useEffect(()=>{
+      console.log(errors)
+  }, [errors])
+
+
   return (
     <>
           <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3'>
+
+              <div>
+                  <span> Upload Avatar </span>
+                  <input type="file" {...register("avatar")} />
+              </div>
+
+
               <input {...register("fullName")} placeholder='Enter Your Full Name' className='p-2 '/>
               {errors.fullName?.message && <>
                   <p className='text-sm text-red-500'>{errors.fullName?.message}</p>
@@ -33,7 +45,7 @@ function Form() {
                   <p className='text-sm text-red-500'>{errors.password?.message}</p>
               </>}
               
-              <button className='p-2 text-white bg-red-600'>Submit</button>
+              <button className='p-2 text-white bg-red-600 '>Submit</button>
 
           </form>
           </>
