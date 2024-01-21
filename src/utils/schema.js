@@ -19,6 +19,13 @@ const registerSchema = z
         (file) => file && ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
         "Only Images are Allowed"
       ),
+      coverImage: z
+      .any()
+      .refine((file) => file?.length !== 0, "Avatar is Required")
+      .refine(
+        (file) => file && ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
+        "Only Images are Allowed"
+      ),
   })
   .required("All Fields are Required");
 
