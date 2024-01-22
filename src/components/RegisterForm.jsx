@@ -9,7 +9,7 @@ function Form() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors , isSubmitting},
   } = useForm({ resolver: zodResolver(registerSchema) });
 
   const [avatar, setAvatar] = useState(null);
@@ -34,7 +34,6 @@ function Form() {
           },
         }
       );
-
       console.log(res.data);
     } catch (error) {
       console.log(error.response.data);
@@ -56,20 +55,14 @@ function Form() {
     }
   };
 
-  const handleCover = (e) => {
-    const coverFile = e.target.files[0];
-    if (coverFile) {
-      const coverImageUrl = URL.createObjectURL(coverFile);
-      setCover(coverImageUrl);
-    }
-  };
-
   return (
     <>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center w-full gap-3"
       >
+
+        {/* Cover Image and Avatar Image */}
         <div className="relative w-full p-20 mt-6 border border-gray-300">
           <div className="absolute bottom-[-20px] z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
             <img
@@ -116,7 +109,7 @@ function Form() {
           )}
 
           {errors.coverImage?.message && (
-            <p className="text-sm text-red-500">{errors.avatar?.message}</p>
+            <p className="text-sm text-red-500">{errors.coverImage?.message}</p>
           )}
 
           <input
@@ -161,8 +154,8 @@ function Form() {
             </>
           )}
 
-          <button className="self-center p-2 px-16 text-white bg-red-600">
-            Submit
+          <button disabled={isSubmitting} className="self-center p-2 px-16 text-white bg-red-600">
+        {isSubmitting ? "Submitting" : "Submit"}
           </button>
         </div>
       </form>

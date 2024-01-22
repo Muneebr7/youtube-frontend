@@ -12,13 +12,6 @@ const registerSchema = z
     username: z.string().min(6, "username Lenght should be 6 or more"),
     email: z.string().email("Invalid Email"),
     password: z.string().min(8, "password must be 8 character"),
-    coverImage: z
-      .any()
-      .refine((file) => file?.length !== 0, "Cover Image is Required")
-      .refine(
-        (file) => file && ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
-        "Only Images are Allowed"
-      ),
     avatar: z
       .any()
       .refine((file) => file?.length !== 0, "Avatar is Required")
@@ -26,7 +19,22 @@ const registerSchema = z
         (file) => file && ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
         "Only Images are Allowed"
       ),
+    coverImage: z
+      .any()
+      .refine((file) => file?.length !== 0, "Cover Image is Required")
+      .refine(
+        (file) => file && ACCEPTED_IMAGE_TYPES.includes(file[0]?.type),
+        "Only Images are Allowed"
+      ),
   })
   .required("All Fields are Required");
 
-export { registerSchema };
+const loginSchema = z
+.object({
+  email: z.string().email("Invalid Email"),
+  password: z.string().min(8, "password must be 8 character"),
+})
+;
+
+
+export { registerSchema, loginSchema };

@@ -1,6 +1,8 @@
 
+import { Link } from "react-router-dom";
 import Logo from "../../assets/YoutubeLogo.svg";
-import Form from "../../components/Form";
+import Form from "../../components/RegisterForm";
+
 
 export default function Register() {
  
@@ -15,6 +17,13 @@ export default function Register() {
         {/* Form */}
 
         <Form />
+
+
+        <hr className="mt-4 border border-gray-300" />
+
+<div className="flex justify-center w-full mt-4">
+    <Link to="/login" className="font-bold text-red-600">Already registered? Login now..</Link>
+</div>
 
         </div>
 
