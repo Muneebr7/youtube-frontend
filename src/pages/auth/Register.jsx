@@ -5,21 +5,24 @@ import Form from "../../components/Form";
 export default function Register() {
  
   return (
-    <div className="grid h-screen place-items-center ">
-      <div className="p-12 border bg-secondary border-primary/10">
-        <div className="flex items-center justify-center">
-          <img src={Logo} alt="YouTube Logo" className="w-20" />
-          <h1 className="text-5xl text-white">YouTube</h1>
+    <>
+        <section className="grid h-screen place-items-center">
+
+        <div className="flex flex-col w-1/3 gap-1 p-8 border rounded-md shadow bg-white/90 shadow-white/90">  
+        <div className="flex items-center gap-2"> <img src={Logo} alt="Youtube Logo"  className="w-12"/> <span className="text-2xl font-bold capitalize">Youtube</span> </div>
+            <p className="text-xl text-gray-800 capitalize">Please enter your details to register</p>
+
+        {/* Form */}
+
+        <Form />
+
         </div>
 
-        <p className="my-4 text-lg text-primary">
-          Welcome To Youtube Clone by Muneeb ur Rehman
-        </p>
+        
 
-        <div>
-          <Form />
-        </div>
-      </div>
-    </div>
+        </section>
+    
+    
+    </>
   );
 }
