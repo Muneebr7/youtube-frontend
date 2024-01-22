@@ -64,7 +64,7 @@ function Form() {
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center w-full gap-3">
         <div className="relative w-full p-20 mt-6 border border-gray-300">
 
-        <div className="absolute bottom-0 z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
+        <div className="absolute bottom-[-20px] z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
           <img src={avatar ? avatar : UserSvg} alt="Upload avatar" className="absolute inset-0 object-cover w-full h-full rounded-full" />
           <input type="file" {...register("avatar")} className="absolute inset-0 z-50 rounded-full opacity-0 cursor-pointer"
             onChange={(e) => handleAvatar(e)}
