@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import UserSvg from '../assets/user.svg'
 
+
+
 function Form() {
   const {
     register,
@@ -13,6 +15,7 @@ function Form() {
   } = useForm({ resolver: zodResolver(registerSchema) });
 
   const [avatar , setAvatar] = useState(null)
+  const [coverImage , setCover] = useState(null)
 
   const onSubmit = async (data) => {
     try {
@@ -40,37 +43,53 @@ function Form() {
   };
 
   const handleAvatar = (e) => {
-    const file = e.target.files[0];
-    if(file){
-      const avatarUrl = URL.createObjectURL(file)
+    const avatarFile = e.target.files[0];
+    console.log(avatarFile)
+    if(avatarFile){
+      const avatarUrl = URL.createObjectURL(avatarFile)
       setAvatar(avatarUrl)
     }
   }
 
-
-  useEffect(()=>{
-      console.log(avatar)
-  }, [avatar])
+  const handleCover = (e) => {
+    const coverFile =  e.target.files[0];
+    if(coverFile){
+      const coverImageUrl = URL.createObjectURL(coverFile)
+      setCover(coverImageUrl)
+    }
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center w-full gap-3">
-        <div>   
+        <div className="relative w-full p-20 mt-6 border border-gray-300">
 
-          <div className="relative grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full place-items-center">
+        <div className="absolute bottom-0 z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
           <img src={avatar ? avatar : UserSvg} alt="Upload avatar" className="absolute inset-0 object-cover w-full h-full rounded-full" />
           <input type="file" {...register("avatar")} className="absolute inset-0 z-50 rounded-full opacity-0 cursor-pointer"
             onChange={(e) => handleAvatar(e)}
+          />     
+          </div>
+
+          
+          {/* Cover Image */}
+        <div className="absolute inset-0 z-0 flex items-end justify-center">
+          {coverImage && <>
+            <img src={ coverImage} className="object-cover w-full h-full" />
+          </>}
+           {!coverImage ? <><p className="text-black" > Please Upload Cover Image </p></> : ""} 
+          <input type="file" {...register("coverImage")} className="absolute inset-0 z-50 rounded-full opacity-0 cursor-pointer"
+            onChange={(e) => handleCover(e)}
           />
-          {errors.avatar?.message && (
+          </div>
+
+        </div>
+        
+
+
+        {errors.avatar?.message && (
             <p className="text-sm text-red-500">{errors.avatar?.message}</p>
           )}
-          </div>
-          
-          {/* 
-
-          <input type="file" {...register("coverImage")} /> */}
-        </div>
 
         <input
           {...register("fullName")}
