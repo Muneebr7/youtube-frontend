@@ -2,6 +2,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { loginSchema } from "../utils/schema.js";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 export default function LoginForm() {
   const {
@@ -10,9 +13,10 @@ export default function LoginForm() {
     formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(loginSchema) });
 
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-    console.log(data);
+
     try {
       const res = await axios.post(
         "/api/users/login",
@@ -21,9 +25,14 @@ export default function LoginForm() {
           password: data.password,
         },
       );
-      console.log(res.data);
+
+      if(res.data.statusCode === 200){
+        const fullName = await res.data.data.user.fullName
+        toast.success(`Welcome ${fullName} Login Success`)
+        navigate("/")
+      }
     } catch (error) {
-      console.log(error.response.data);
+      toast.error(error.response.data.message)
     }
   };
 

@@ -4,6 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import UserSvg from "../assets/user.svg";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+
 
 function Form() {
   const {
@@ -14,6 +17,8 @@ function Form() {
 
   const [avatar, setAvatar] = useState(null);
   const [coverImage, setCover] = useState(null);
+
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     console.log(data);
@@ -34,8 +39,15 @@ function Form() {
           },
         }
       );
-      console.log(res.data);
+      
+      if(res.data.statusCode === 200){
+        toast.success("Success")
+        navigate("/login")
+      }
+
     } catch (error) {
+      toast.error(error.response.data?.message)
+      navigate("/login")
       console.log(error.response.data);
     }
   };
