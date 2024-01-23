@@ -7,12 +7,11 @@ import UserSvg from "../assets/user.svg";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 function Form() {
   const {
     register,
     handleSubmit,
-    formState: { errors , isSubmitting},
+    formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(registerSchema) });
 
   const [avatar, setAvatar] = useState(null);
@@ -39,15 +38,14 @@ function Form() {
           },
         }
       );
-      
-      if(res.data.statusCode === 200){
-        toast.success("Success")
-        navigate("/login")
-      }
 
+      if (res.data.statusCode === 200) {
+        toast.success("Success");
+        navigate("/login");
+      }
     } catch (error) {
-      toast.error(error.response.data?.message)
-      navigate("/login")
+      toast.error(error.response.data?.message);
+      navigate("/login");
       console.log(error.response.data);
     }
   };
@@ -73,7 +71,6 @@ function Form() {
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col items-center w-full gap-3"
       >
-
         {/* Cover Image and Avatar Image */}
         <div className="relative w-full p-20 mt-6 border border-gray-300">
           <div className="absolute bottom-[-20px] z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
@@ -166,8 +163,13 @@ function Form() {
             </>
           )}
 
-          <button disabled={isSubmitting} className="self-center p-2 px-16 text-white bg-red-600">
-        {isSubmitting ? "Submitting" : "Submit"}
+          <button
+            disabled={isSubmitting}
+            className={`self-center p-2 px-16 text-white bg-red-600 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+          >
+            {isSubmitting ? "Submitting" : "Submit"}
           </button>
         </div>
       </form>

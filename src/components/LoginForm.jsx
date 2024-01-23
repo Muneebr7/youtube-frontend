@@ -5,7 +5,6 @@ import { loginSchema } from "../utils/schema.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
-
 export default function LoginForm() {
   const {
     register,
@@ -16,26 +15,21 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const onSubmit = async (data) => {
-
     try {
-      const res = await axios.post(
-        "/api/users/login",
-        {
-          email: data.email,
-          password: data.password,
-        },
-      );
+      const res = await axios.post("/api/users/login", {
+        email: data.email,
+        password: data.password,
+      });
 
-      if(res.data.statusCode === 200){
-        const fullName = await res.data.data.user.fullName
-        toast.success(`Welcome ${fullName} Login Success`)
-        navigate("/")
+      if (res.data.statusCode === 200) {
+        const fullName = await res.data.data.user.fullName;
+        toast.success(`Welcome ${fullName} Login Success`);
+        navigate("/");
       }
     } catch (error) {
-      toast.error(error.response.data.message)
+      toast.error(error.response.data.message);
     }
   };
-
 
   return (
     <div>
@@ -70,7 +64,9 @@ export default function LoginForm() {
 
           <button
             disabled={isSubmitting}
-            className="self-center p-2 px-16 text-white bg-red-600"
+            className={`self-center p-2 px-16 text-white bg-red-600 ${
+              isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+            }`}
           >
             {isSubmitting ? "Submitting" : "Submit"}
           </button>
