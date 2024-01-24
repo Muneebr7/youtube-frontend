@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../../assets/YoutubeLogo.svg";
 import Burger from "../../assets/burgerMenu.svg";
+import useStore from "../../Store";
 
 
 
 
 export default function Header() {
 
-  const [user , setUser] = useState(true)
+const {intializeAuth , user} = useStore();
+
+useEffect(()=>{
+    intializeAuth()
+},[])
 
   return (
     <header className="flex justify-between gap-10 p-2 lg:gap-20">
@@ -81,7 +86,7 @@ export default function Header() {
         </svg>
 
         {
-          user && <>
+          !user?.avatar ? <>
               <a href="/login">
 
               <svg
@@ -101,7 +106,11 @@ export default function Header() {
 
               </a>
           </>
-        }
+           :  <>
+              <a href="/my-account" className="relative w-10 h-10 overflow-hidden border rounded-full border-white/30">
+              <img src={user?.avatar} className="absolute inset-0 object-cover rounded-full" />
+              </a>
+           </>}
 
         
       </div>

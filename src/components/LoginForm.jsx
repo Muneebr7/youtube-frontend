@@ -4,6 +4,7 @@ import axios from "axios";
 import { loginSchema } from "../utils/schema.js";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import useStore from "../Store.js";
 
 export default function LoginForm() {
   const {
@@ -11,6 +12,8 @@ export default function LoginForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({ resolver: zodResolver(loginSchema) });
+
+  const isLogin = useStore(state => state.isLogin)
 
   const navigate = useNavigate();
 
@@ -22,7 +25,8 @@ export default function LoginForm() {
       });
 
       if (res.data.statusCode === 200) {
-        const fullName = await res.data.data.user.fullName;
+        isLogin(res.data.data.user)
+        const fullName = res.data.data.user.fullName;
         toast.success(`Welcome ${fullName} Login Success`);
         navigate("/");
       }

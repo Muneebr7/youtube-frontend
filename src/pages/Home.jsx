@@ -4,18 +4,21 @@ import VideoCard from "../components/layouts/VideoCard";
 import axios from "axios";
 import HomeIcon from '../assets/Home.svg'
 import subscriptionIcon from '../assets/subscription.svg'
-
+import useStore from "../Store";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [videos, setVideos] = useState(null);
+  
+  const { intializeAuth , user } = useStore();
 
   const fetchVideos = async () => {
     setLoading(true);
     try {
       const res = await axios.get("/api/videos/");
       setVideos(res.data.data);
+      
       setLoading(false);
     } catch (error) {
       setError(error.message);
@@ -25,12 +28,15 @@ export default function Home() {
 
   useEffect(() => {
     fetchVideos();
+    intializeAuth()
     return () => fetchVideos();
   }, []);
 
+
   return (
     <div className="flex flex-col max-h-screen">
-      
+  
+
       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto py-4 px-4 md:px-0">
 
 
