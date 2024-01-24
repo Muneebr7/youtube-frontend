@@ -14,17 +14,17 @@ export default function Header() {
       {/* Logo */}
       <div className="flex items-center gap-2 text-white">
         <img src={Burger} alt="burger menu" className="w-10 p-2 h10" />
-
-        <img src={Logo} alt="Logo" className="w-full" />
+        <a href="/">
+        <img src={Logo} alt="Logo" className="w-full" /></a>
       </div>
 
       {/* Search */}
 
-      <div className="relative flex items-center hidden px-4 rounded-full bg-accent md:flex">
+      <div className="relative items-center hidden px-4 rounded-full bg-accent md:flex">
         <input
           type="text"
           placeholder="Search"
-          className="px-6 py-1 h-full w-[30rem] text-white rounded-s-full border border-[#262626] bg-accent placeholder:text-[#888888] focus:outline-none w-[20rem] left-0"
+          className="px-6 py-1 h-full w-[30rem] text-white rounded-s-full border border-[#262626] bg-accent placeholder:text-[#888888] focus:outline-none left-0"
         />
         <div className=" bg-[#1d1d1d] h-full flex justify-center items-center px-4 rounded-e-full">
         <svg

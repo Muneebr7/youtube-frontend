@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Header from "../components/layouts/Header";
+
 import VideoCard from "../components/layouts/VideoCard";
 import axios from "axios";
 import HomeIcon from '../assets/Home.svg'
@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col max-h-screen">
-      <Header />
+      
       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto py-4 px-4 md:px-0">
 
 

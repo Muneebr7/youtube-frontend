@@ -6,6 +6,8 @@ import Home from './pages/Home.jsx'
 import Register from './pages/auth/Register.jsx'
 import { Toaster } from 'react-hot-toast'
 import Login from './pages/auth/Login.jsx'
+import SingleVideo from './pages/SingleVideo.jsx'
+import Header from './components/layouts/Header.jsx'
 
 const routes = createBrowserRouter([
   {
@@ -19,6 +21,10 @@ const routes = createBrowserRouter([
   {
     path : "/register",
     element : <Register/>
+  },
+  {
+    path : "/video/:videoId",
+    element : <SingleVideo />
   }
 ])
 
@@ -26,6 +32,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   
   <React.StrictMode>
     <Toaster position="top-center" />
+    <Header />
     <RouterProvider router={routes} />
   </React.StrictMode>
   ,
