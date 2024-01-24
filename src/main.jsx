@@ -25,6 +25,10 @@ const routes = createBrowserRouter([
   {
     path : "/video/:videoId",
     element : <SingleVideo />
+  },
+  {
+    path : "*",
+    element : <p className='text-4xl text-white'>Page Not Found</p>
   }
 ])
 

@@ -11,8 +11,6 @@ export default function Home() {
   const [error, setError] = useState(null);
   const [videos, setVideos] = useState(null);
   
-  const { intializeAuth , user } = useStore();
-
   const fetchVideos = async () => {
     setLoading(true);
     try {
@@ -28,7 +26,6 @@ export default function Home() {
 
   useEffect(() => {
     fetchVideos();
-    intializeAuth()
     return () => fetchVideos();
   }, []);
 

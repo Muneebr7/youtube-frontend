@@ -3,9 +3,6 @@ import Logo from "../../assets/YoutubeLogo.svg";
 import Burger from "../../assets/burgerMenu.svg";
 import useStore from "../../Store";
 
-
-
-
 export default function Header() {
 
 const {intializeAuth , user} = useStore();
@@ -107,8 +104,8 @@ useEffect(()=>{
               </a>
           </>
            :  <>
-              <a href="/my-account" className="relative w-10 h-10 overflow-hidden border rounded-full border-white/30">
-              <img src={user?.avatar} className="absolute inset-0 object-cover rounded-full" />
+              <a href="/my-account" className="relative w-8 overflow-hidden border rounded-full border-white/30">
+              <img src={user?.avatar} />
               </a>
            </>}
 
