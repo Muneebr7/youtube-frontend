@@ -1,45 +1,33 @@
 import React from "react";
 import Logo from "../../assets/YoutubeLogo.svg";
+import Burger from "../../assets/burgerMenu.svg";
 
 export default function Header() {
   return (
-    <header className="flex justify-between gap-10 p-5 lg:gap-20">
+    <header className="flex justify-between gap-10 p-2 lg:gap-20">
       {/* Logo */}
-      <div className="flex items-center text-white">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="rounded-full cursor-pointer w-7 h-7 hover:bg-white/30"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-          />
-        </svg>
+      <div className="flex items-center gap-2 text-white">
+        <img src={Burger} alt="burger menu" className="w-10 p-2 h10" />
 
-        <img src={Logo} alt="Logo" className="w-8 ml-4" />
-        <h3 className="hidden text-xl font-bold md:block">Youtube</h3>
+        <img src={Logo} alt="Logo" className="w-full" />
       </div>
 
       {/* Search */}
 
-      <div className="relative items-center hidden px-4 rounded-full bg-secondary md:flex">
+      <div className="relative flex items-center hidden px-4 rounded-full bg-accent md:flex">
         <input
           type="text"
           placeholder="Search"
-          className="px-2 py-1 text-white border-none rounded-full bg-secondary placeholder:text-white/70 focus:outline-none w-[20rem]"
+          className="px-6 py-1 h-full w-[30rem] text-white rounded-s-full border border-[#262626] bg-accent placeholder:text-[#888888] focus:outline-none w-[20rem] left-0"
         />
+        <div className=" bg-[#1d1d1d] h-full flex justify-center items-center px-4 rounded-e-full">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           stroke-width="1.5"
           stroke="currentColor"
-          className="w-5 h-5 text-white"
+          className="w-5 h-5 text-white cursor-pointer"
         >
           <path
             stroke-linecap="round"
@@ -47,6 +35,8 @@ export default function Header() {
             d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
           />
         </svg>
+        </div>
+        
       </div>
 
       {/* User Buttons */}

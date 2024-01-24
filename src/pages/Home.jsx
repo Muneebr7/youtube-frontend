@@ -29,7 +29,11 @@ export default function Home() {
     <div className="flex flex-col max-h-screen">
       <Header />
       <div className="grid grid-cols-[300px,1fr] flex-grow-1 overflow-auto py-4 px-4 md:px-0">
+
+
         {/* SideBar */}
+
+        
         <aside className="flex-col hidden gap-4 px-5 text-white md:flex">
 
           <div className="flex items-center gap-2 p-2 rounded-lg bg-secondary">
