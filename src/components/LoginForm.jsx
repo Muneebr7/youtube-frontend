@@ -43,7 +43,7 @@ export default function LoginForm() {
           <input
             {...register("email")}
             placeholder="Enter Your Email"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent"
           />
           {errors.email?.message && (
             <>
@@ -54,7 +54,7 @@ export default function LoginForm() {
             type="password"
             {...register("password")}
             placeholder="Create Password"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent"
           />
           {errors.password?.message && (
             <>
@@ -64,7 +64,7 @@ export default function LoginForm() {
 
           <button
             disabled={isSubmitting}
-            className={`self-center p-2 px-16 text-white bg-red-600 ${
+            className={`self-center mt-2 p-2 px-16 text-white bg-red-700 rounded-md ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

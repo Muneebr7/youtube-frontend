@@ -72,7 +72,7 @@ function Form() {
         className="flex flex-col items-center w-full gap-3"
       >
         {/* Cover Image and Avatar Image */}
-        <div className="relative w-full p-20 mt-6 border border-gray-300">
+        <div className="relative w-full p-20 mt-6 border">
           <div className="absolute bottom-[-20px] z-10 grid w-32 h-32 p-4 overflow-hidden bg-white rounded-full left-10 place-items-center">
             <img
               src={avatar ? avatar : UserSvg}
@@ -96,7 +96,7 @@ function Form() {
             )}
             {!coverImage ? (
               <>
-                <p className="text-black"> Please Upload Cover Image </p>
+                <p className="ml-20 text-white/70"> Please Upload Cover Image </p>
               </>
             ) : (
               ""
@@ -112,7 +112,7 @@ function Form() {
 
         {/* Form Wrapper */}
 
-        <div className="flex flex-col w-full gap-3 mt-4">
+        <div className="flex flex-col w-full gap-4 mt-6">
           {errors.avatar?.message && (
             <p className="text-sm text-red-500">{errors.avatar?.message}</p>
           )}
@@ -124,7 +124,7 @@ function Form() {
           <input
             {...register("fullName")}
             placeholder="Enter Your Full Name"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent"
           />
           {errors.fullName?.message && (
             <>
@@ -134,7 +134,7 @@ function Form() {
           <input
             {...register("username")}
             placeholder="Username"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent"
           />
           {errors.username?.message && (
             <>
@@ -144,7 +144,7 @@ function Form() {
           <input
             {...register("email")}
             placeholder="Enter Your Email"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent "
           />
           {errors.email?.message && (
             <>
@@ -155,7 +155,7 @@ function Form() {
             type="password"
             {...register("password")}
             placeholder="Create Password"
-            className="p-2 "
+            className="p-2 text-sm rounded-md focus:outline-none focus:border focus:border-red-800 text-accent "
           />
           {errors.password?.message && (
             <>
@@ -165,7 +165,7 @@ function Form() {
 
           <button
             disabled={isSubmitting}
-            className={`self-center p-2 px-16 text-white bg-red-600 ${
+            className={`self-center p-2 px-16 text-white bg-red-600 rounded-md ${
               isSubmitting ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >
