@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
     element : <SingleVideo />
   },
   {
-    path: "/my-account",
+    path: "/channel/:username",
     element : <MyAccount/>
   },
   {
