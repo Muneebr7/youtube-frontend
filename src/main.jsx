@@ -8,6 +8,10 @@ import { Toaster } from 'react-hot-toast'
 import Login from './pages/auth/Login.jsx'
 import SingleVideo from './pages/SingleVideo.jsx'
 import Header from './components/layouts/Header.jsx'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient();
+
 
 const routes = createBrowserRouter([
   {
@@ -35,9 +39,12 @@ const routes = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   
   <React.StrictMode>
+    <QueryClientProvider client={queryClient} >
     <Toaster position="top-center" />
     <Header />
     <RouterProvider router={routes} />
+    </QueryClientProvider>
   </React.StrictMode>
+ 
   ,
 )

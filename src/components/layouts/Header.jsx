@@ -105,7 +105,7 @@ useEffect(()=>{
           </>
            :  <>
               <a href="/my-account" className="relative w-8 overflow-hidden border rounded-full border-white/30">
-              <img src={user?.avatar} />
+              <img src={user?.avatar} className="object-cover object-top " />
               </a>
            </>}
 
