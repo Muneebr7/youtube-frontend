@@ -9,6 +9,7 @@ import Login from './pages/auth/Login.jsx'
 import SingleVideo from './pages/SingleVideo.jsx'
 import Header from './components/layouts/Header.jsx'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import MyAccount from './pages/Profile/MyAccount.jsx'
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,10 @@ const routes = createBrowserRouter([
   {
     path : "/video/:videoId",
     element : <SingleVideo />
+  },
+  {
+    path: "/my-account",
+    element : <MyAccount/>
   },
   {
     path : "*",
