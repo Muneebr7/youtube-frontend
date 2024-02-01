@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import useStore from "../../Store";
 
 export default function MyAccount() {
 
+    const {isAuth} = useStore()
     const {username} = useParams()
 
   const {
@@ -59,10 +61,12 @@ export default function MyAccount() {
           </span>
           </div>
 
-        
-          <button className="p-2 mt-auto text-sm rounded-md bg-secondary text-white/90">
+        {
+            isAuth && <button className="p-2 mt-auto text-sm rounded-md bg-secondary text-white/90">
             Edit Profile
           </button>
+        }
+          
         </div>
       </div>
 
